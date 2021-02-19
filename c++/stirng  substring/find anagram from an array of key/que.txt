@@ -1,0 +1,9 @@
+6
+cat 
+dog
+tac
+god
+act
+gdo
+
+tca

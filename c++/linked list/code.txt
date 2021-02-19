@@ -1,0 +1,84 @@
+#include <bits/stdc++.h>
+using namespace std;
+class node  
+{  
+    public: 
+    int data;  
+    node *next;
+    node(){
+    }  
+    node(int n ){
+        data=n;
+        next =NULL;
+    }
+};
+void insertatstart(node **head){
+     int key ; cin>>key;
+     node *temp = new node(key);
+         temp->next = *head;
+         *head=temp;
+}
+
+
+void insertatend(node *head){
+    int key ; cin>>key;
+    node *temp = new node(key);
+    while(head->next!=NULL){
+        head= head->next;
+    }
+    head->next=temp;
+}
+
+void insertatk(node *head){
+    int k,key;
+    cin>>k>>key;
+    node *temp = new node(key);
+    while(k-1){
+         head=head->next;
+         k--;
+    }
+    temp->next=head->next;
+    head->next=temp;
+}
+void deleteatfront(node **head){
+    node *temp = new node();
+    temp= *head;
+    *head= temp->next;
+    free(temp);
+}
+void deletek(node *head){
+    node * temp = new node();
+    int key ; cin>>key;
+     temp = head;
+     while(temp->next->data==key){
+         temp= temp->next;
+     }
+     temp->next=temp->next->next;
+}
+
+void print ( node *head ){
+    while(head!=NULL){
+        cout<<head->data;
+        head = head->next;
+    }
+}
+int main() {
+         int n ;
+         node *head=NULL;
+
+         do {
+             cout<<"1.IAS "<<"2.IAE "<<"4.IAK "<<"5.PRINT "<<"6.DAF "<<"7.DAE "<<"8.DK "<<"9.EXIT ";
+             cin>>n;
+
+            switch(n){
+                case 1: insertatstart(&head); break;
+                case 2 : insertatend(head); break;
+                case 3 : insertatk(head); break;
+                case 5:  print(head); break;
+                case 6: deleteatfront(&head);break;
+                case 7: deletek(head);
+            }
+            cout<<endl;
+         }  while(n<8);
+         
+}

@@ -1,0 +1,47 @@
+Given a sorted array of positive integers, design an algorithm and implement it using a program to find three indices i, j, k such that arr[i] + arr[j] = arr[k].
+   Given a sorted array of positive integers, design an algorithm and implement it using a program to find three indices i, j, k such that arr[i] + arr[j] = arr[k].
+
+
+Input format:
+The first line contains number of test cases, T. For each test case, there will be two input lines. First line contains n (the size of array).
+
+Second line contains space-separated integers describing array.
+
+ 
+
+Output Format:
+The output will have T number of lines.
+
+Input:
+
+Output:
+
+3
+
+                                                                                                           No sequence found.
+
+5
+
+                                                                                                                  2, 7, 8
+
+1 5 84 209 341
+
+                                                                                                                  1, 6, 9
+
+10
+
+ 
+
+24 28 48 71 86 89 92 120 194 201
+
+ 
+
+15
+
+ 
+
+64 69 82 95 99 107 113 141 171 350 369 400 511 590
+
+ 
+
+666
