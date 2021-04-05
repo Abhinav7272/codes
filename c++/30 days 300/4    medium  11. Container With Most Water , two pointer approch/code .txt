@@ -1,0 +1,60 @@
+11. Container With Most Water
+Medium
+
+9010
+
+695
+
+Add to List
+
+Share
+Given n non-negative integers a1, a2, ..., an , where each represents a point at coordinate (i, ai). n vertical lines are drawn such that the two endpoints of the line i is at (i, ai) and (i, 0). Find two lines, which, together with the x-axis forms a container, such that the container contains the most water.
+
+Notice that you may not slant the container.
+
+ 
+
+Example 1:
+
+
+Input: height = [1,8,6,2,5,4,8,3,7]
+Output: 49
+Explanation: The above vertical lines are represented by array [1,8,6,2,5,4,8,3,7]. In this case, the max area of water (blue s
+ection) the container can contain is 49.
+
+
+
+
+
+
+
+
+
+
+
+
+
+class Solution {
+public:
+    int maxArea(vector<int>& arr) {
+        long area = 0;
+        long m =0;
+        long l =0 , r = arr.size()-1;
+        while(l<=r){
+            area = (r-l)*min(arr[l],arr[r]);
+            if(arr[l]<arr[r]){
+                l++;
+            }
+            else if(arr[l]>arr[r]){
+                r--;
+            }
+            else{
+                l++;
+                r--;
+            }
+            if(area > m){m= area;}
+        }
+        return m;
+        
+    }
+};
