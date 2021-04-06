@@ -1,0 +1,22 @@
+class Solution {
+public:
+    vector<int> numSmallerByFrequency(vector<string>& qrr, vector<string>& words) {
+       vector <int> answer;
+        for(int  i =0 ;i< qrr.size() ;i++){
+            string q = qrr[i];
+            char v = *min_element(q.begin(), q.end());
+            int counto = count (q.begin(), q.end() ,v);
+            int target =0 ;
+            for(int j=0 ;j< words.size() ;j++){
+                string w = words[j];
+                char x = *min_element(w.begin(), w.end());
+                int counti = count (w.begin(), w.end() ,x);
+                if(counto<counti){
+                    target++;
+                }
+            }
+            answer.push_back(target);
+        }
+        return answer ;
+    }
+};
