@@ -1,0 +1,95 @@
+Question 3 - Dangerous Script
+Problem Statement
+If you've ever looked at an assembly language dump of an executable file, you know that commands come in the form of hexadecimal digits that are grouped by the processor into instructions. It is important that the parsing be done correctly or code will not be executed as expected. Wrong parsing is the basis for Return Oriented Programming, a method of causing mahem.
+
+You have developed a program in a new scripting language. Of course, it requires accurate parsing in order to perform as expeced, and it is very cryptic. You want to determine how many valid commands can be made out of your lines of script. To do this, you count all of the substrings that make up a valid command. Each of the valid commands will be in the following format:
+
+• The first letter is a lowercase English letter.
+
+• Next, it contains a sequence of zero or more of the following characters: lowercase English letters, digits, and colons.
+
+• Next, it contains a forward slash '/'.
+
+• Next, it contains a sequence of one or more of the following characters: lowercase English letters and digits.
+
+• Next, it contains a backward slash '\'.
+
+• Next, it contains a sequence of one or more lowercase English letters.
+
+Given some string, s, we define the following: • s[i..j] is a substring consisting of all the characters in the inclusive range between index i and index j.
+
+• Two substrings, s[i[1]..j[1]] and s[i[2]..j[2]] are said to be distinct if either i[1] != i[2] or j[1] != j[2].
+
+For example, your command line is abc:/b1c\xy.
+
+Valid command substrings are:
+
+abc:/b1c\xy
+
+bc:/b1c\xy
+
+c:/b1c\xy
+
+abc:/b1c\x
+
+bc:/b1c\x
+
+c:/b1c\x
+
+There are six valid commands that may be parsed from that one command string.
+
+Function Description
+Complete the function commandCount in the editor below. The function must return an array of integers, each representing the number of valid command strings in commands[i].
+
+commandCount has the following parameter(s): commands[commands[0],...commands[n-l]]: an array of strings
+
+Constraints
+• 1 <= n <= 50
+
+• Each character of commands[i] belongs to [a-z, 0-9, /, \, :]
+
+• Each |commands[i]| <= 5 * 10^5.
+
+Sample Input
+6
+w\\//a/b
+w\\//a\b
+w\\/a\b
+w:://a\b
+w::/a\b
+w:/a\bc::/12\xyz
+Sample Output
+0
+0
+0
+0
+1
+8
+Explanation:
+Let's call our return array ret.
+
+We fill ret as follows:
+
+• commands[0] = "w\//a/b" has no valid command substring, so ret[0] = 0.
+
+• commands[1] = "w\//a\b" has no valid command substring, so ret[1] = 0.
+
+• commands[2] = "w\/a\b" has no valid command substring, so ret[2] = 0.
+
+• commands[3] = "w:://a\b" has no valid command substring, so ret[3] = 0.
+
+• commands[3] = "w::/a\b" has one valid command substring, commands[O..6] = "w::/a\b" so ret[4] = 1
+
+• commands[5] = "w:/a\bc::/12\xyz" has the following eight valid command substrings:
+
+commands[0..5] = w:/a\b
+commands[O..6] = w:/a\bc
+commands[5..13] = bc::/12\x
+commands[5..14] = bc::/12\xy
+commands[5..15] = bc::/12\xyz
+commands[6..13] = c::/12\x
+commands[6..14] = c::/12\xy
+commands[6..15] = c::/12\xyz
+This means ret[5] = 8
+
+We then return ret = [0, 0, 0, 0, 1, 8].

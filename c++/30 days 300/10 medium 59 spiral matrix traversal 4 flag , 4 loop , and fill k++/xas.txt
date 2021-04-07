@@ -1,0 +1,28 @@
+class Solution {
+public:
+    vector<vector<int>> generateMatrix(int n) {
+       vector<vector<int>> arr(n,vector<int>(n,0));
+        int k =1;
+        int left = 0 , right = n-1 , top =0 , buttom = n-1;
+        while(k<=n*n){
+            for ( int i = left ; i<=right && k<=n*n ;i++ ){
+                arr[top][i] = k++;
+            }
+            top++;
+            for(int i = top ;i<=buttom && k<=n*n ;i++){
+                arr[i][right] = k++ ;
+            }
+            right -- ;
+            for ( int i = right ;i>=left && k<=n*n ; i--){
+                arr[buttom][i] = k++ ;
+            }
+            buttom -- ;
+            for ( int i = buttom ;i>=top && k<=n*n ;i --){
+                arr[i][left] = k++;
+            }
+            left ++ ;
+            
+        }
+        return arr;
+    }
+};
