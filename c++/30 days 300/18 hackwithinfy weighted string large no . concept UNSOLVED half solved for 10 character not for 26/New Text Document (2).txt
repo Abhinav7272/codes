@@ -1,0 +1,28 @@
+#include <bits/stdc++.h>
+using namespace std;
+int main() {
+    long arr[10] ;
+    long string ;
+    long sum ;
+    cin>> sum ;
+    arr[0] = 0;
+    arr[1] = 1;
+    for(int i = 2 ;i<10;i++){
+        arr[i] = i*arr[i-1]+ arr[i-1];
+    }
+    int i =0 ;
+    while ( arr[i]<sum){
+        i++;
+    }
+    i--;
+    // string s ;
+    while(sum>0){
+        if(sum-arr[i]>=0){
+            cout<<char('A'+i-1)<<" ";
+            sum-=arr[i];
+        }
+        if(sum<arr[i]){
+         i--;
+        }
+    }
+}
