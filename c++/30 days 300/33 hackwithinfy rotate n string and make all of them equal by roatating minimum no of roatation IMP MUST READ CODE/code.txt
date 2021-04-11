@@ -1,0 +1,49 @@
+
+// CPP program to make all strings same using
+// move to end operations.
+#include <bits/stdc++.h>
+using namespace std;
+  
+// Returns minimum number of moves to end
+// operations to make all strings same.
+int minimunMoves(string arr[], int n)
+{
+    int ans = INT_MAX;
+    for (int i = 0; i < n; i++)
+    {
+        int curr_count = 0;  
+  
+        // Consider s[i] as target string and
+        // count rotations required to make 
+        // all other strings same as str[i].
+        for (int j = 0; j < n; j++) {
+  
+            string tmp = arr[j] + arr[j];
+  
+            // find function returns the index where we 
+            // found arr[i] which is actually count of
+            // move-to-front operations. 
+            int index = tmp.find(arr[i]);
+  
+            // If any two strings are not rotations of
+            // each other, we can't make them same.  
+            if (index == string::npos)
+                return -1; 
+  
+            curr_count += index;
+        }
+  
+        ans = min(curr_count, ans);
+    }
+  
+    return ans;
+}
+  
+// driver code for above function.
+int main()
+{
+    string arr[] = {"xzzwo", "zwoxz", "zzwox", "xzzwo"};  
+    int n = sizeof(arr)/sizeof(arr[0]);
+    cout << minimunMoves(arr, n);
+    return 0;
+}

@@ -1,0 +1,27 @@
+Given an integer N
+N<=10^50
+Output the no. of pairs (x,y) such that
+
+0<=x<=n
+0<=y<=n
+F(x) +F(y) = Prime number
+
+F(x) = sum of digits of x
+
+Note : (x,y) and (y,x) are to be treated as same pair
+
+
+ 
+Example
+
+Input
+
+3
+
+Output
+
+5
+
+Explanation
+
+5 pairs (0,2), (1,1), (0,3), (2,3), (1,2) give prime no.s

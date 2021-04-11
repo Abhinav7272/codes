@@ -1,0 +1,33 @@
+class Solution {
+public:
+    int minOperations(vector<int>& nums, int x) {
+        int l =0 , r = nums.size()-1;
+        int count =0 ;
+        while(l<=r && x){
+            if(nums[l]==x){
+                count++;
+                return count;
+                }
+            else if(nums[r]==x){
+                count++;
+                return count;
+            }
+             else if(nums[l]<x && nums[l]>=nums[r]){
+                  x-=nums[l];
+                  count++;
+                  l++;
+            }
+             else if(nums[r]<x && nums[r]>nums[l] ){
+                 x-=nums[r];
+                 r--;
+                 count++;
+             }
+            else {
+                return -1;
+                
+            }
+            
+        }
+        return x==0?count:-1;
+    }
+};

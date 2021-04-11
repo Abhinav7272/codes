@@ -1,0 +1,32 @@
+#include <bits/stdc++.h>
+using namespace std;
+int main() {
+    int k;
+    string s ;
+    cin>>k>>s;
+    int i=0,j=0,count=0,m=0;
+    list<char> li;
+    map<char , int > mapp;
+    while(j<s.length()){
+        if(count<k){
+            if(mapp[s[j]]==0){
+                count++;
+            }
+            mapp[s[j]]++;
+            j++;
+        }
+        if(count==k){
+            m=max(m,(j-i+1));
+            while(i<=j){
+                mapp[s[i]]--;
+                if(mapp[s[i]]==0){
+                    count--;
+                    break;
+                }
+                i++;
+            }
+            j++;
+        }
+    }
+    cout<<m;
+}

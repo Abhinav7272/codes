@@ -1,0 +1,31 @@
+class Solution {
+      
+public:
+    int cal(vector<int>& gas, vector<int>& cost,int idx){
+        int remain =gas[idx];
+        int a= idx+1;
+        while(a<gas.size()){
+            remain+=(gas[a]-cost[a-1]);
+            a++;
+        }
+        if(idx!=0){
+            remain+=gas[0]-cost[gas.size()-1];
+        }
+        a=1;
+        while(a<idx){
+            remain+=(gas[a]-cost[a]);
+            a++; 
+        }
+        return remain;
+        
+    }
+    int canCompleteCircuit(vector<int>& gas, vector<int>& cost) {
+         int i=0 , n = gas.size();
+        for ( int i =0;i<n ;i++){
+            if(gas[i]>=cost[i]){
+              return  cal(gas , cost , i);
+            }
+        }
+        return -1;
+    }
+};
