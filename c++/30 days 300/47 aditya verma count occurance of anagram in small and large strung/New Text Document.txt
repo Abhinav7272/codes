@@ -1,0 +1,33 @@
+#include <bits/stdc++.h>
+using namespace std;
+int main() {
+    string large , small;
+    cin>>large >> small;
+    map<char , int > m;
+    for(int i=0;i<3;i++){
+        m[small[i]]++;
+    }
+    int i=0,j=0,count=m.size();
+    while(j<6){
+        if(j<4){
+            m[large[j]]--;
+            if(m[large[j]]==0)
+                count--;
+           j++;
+        }
+        else {
+            if(m[large[i]]==0){
+                count++;
+            }
+            m[large[i]]++;
+            m[large[j]]--;
+             if(m[large[j]]==0)
+                count--;
+            j++;
+            i++;
+        }
+       if(count==0){
+          cout<<"yess"<<endl;
+       }
+    }
+}
