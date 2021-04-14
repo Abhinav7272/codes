@@ -1,0 +1,24 @@
+//sort a k sorted array  min heap
+#include <bits/stdc++.h>
+using namespace std;
+int main() {
+    priority_queue<int , vector<int>, greater<int>> max_heap;
+    int n ; 
+    cin>>n;
+    int arr[n];
+    for ( int i =0 ;i< n ;i++){
+        cin>> arr[i];
+    }
+    int k; cin>> k;
+    for( int i = 0 ;i< n ;i++){
+        max_heap.push(arr[i]);
+        if(max_heap.size()>k){
+            cout<<max_heap.top();
+            max_heap.pop();
+        }
+    }
+    while(!max_heap.empty()){
+    cout<<max_heap.top();
+    max_heap.pop();
+    }
+}

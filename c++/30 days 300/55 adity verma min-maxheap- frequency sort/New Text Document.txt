@@ -1,0 +1,21 @@
+//frequecy sort 
+#include <bits/stdc++.h>
+using namespace std;
+int main() {
+    priority_queue<pair<int, int>> max_heap;
+    int n ; 
+    cin>>n;
+    int arr[n];
+    unordered_map<int , int> m ;
+    for ( int i =0 ;i< n;i++){
+        cin>> arr[i];
+        m[arr[i]]++;
+    }
+    for( auto i = m.begin() ;i!=m.end() ;i++){
+        max_heap.push({i->first ,i->second});
+    }
+    while(!max_heap.empty()){
+    for(int i=0;i<max_heap.top().second;i++) cout<<max_heap.top().first;
+    max_heap.pop();
+    }
+}

@@ -1,0 +1,23 @@
+//minimum cost connecting ropes
+#include <bits/stdc++.h>
+using namespace std;
+int main() {
+    priority_queue<int , vector<int>, greater<int>> min_heap;
+    int n ;
+    cin>>n;
+    int arr[n];
+    int cost = 0;
+    for ( int i =0 ;i< n;i++){
+        cin>> arr[i];
+        min_heap.push(arr[i]);
+    }
+    cost = min_heap.top();
+    min_heap.pop();
+    cost+=min_heap.top();
+     min_heap.pop();
+    while(!min_heap.empty()){
+        // pop two min sum to count;
+        // insert sum back 
+    }
+    cout<<cost;
+}
