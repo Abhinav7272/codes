@@ -1,0 +1,6 @@
+#include <bits/stdc++.h>
+using namespace std;
+int main() {
+// primalatry test 
+// check a no is prime or not by checking divisiblity till sqrt(n).
+}
